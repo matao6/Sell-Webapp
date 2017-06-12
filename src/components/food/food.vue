@@ -34,6 +34,7 @@
     import Vue from 'vue'
     import BScroll from 'better-scroll'
     import cartcontrol from 'components/cartcontrol/cartcontrol'
+    import split from 'components/split/split'
 
     export default {
         props: {
@@ -71,7 +72,8 @@
             }
         },
         components: {
-            cartcontrol
+            cartcontrol,
+            split
         }
     }
 </script>
