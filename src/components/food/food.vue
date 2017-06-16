@@ -203,4 +203,11 @@
                 font-weight: 200px
                 color: rgb(77, 85, 93)
                 line-height: 24px
+        .rating
+            padding: 18px 18px 12px 18px
+            border-bottom: 1px solid #ccc
+            .title
+                font-size: 14px
+                line-height: 14px
+                color: rgb(7, 17, 27)
 </style>
