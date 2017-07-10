@@ -14,10 +14,10 @@
 			</div>
 			<div class="foods-wrapper" ref="foodsWrapper">
 				<ul>
-					<li class="food-list food-list-hook" v-for="item in goods">
+					<li class="food-list food-list-hook" v-for="item in goods" :key="item.id">
 						<h1 class="title">{{ item.name }}</h1>
 						<ul>
-							<li @click="selectFood(food, $event)" class="food-item" v-for="food in item.foods">
+							<li @click="selectFood(food, $event)" class="food-item" v-for="food in item.foods" :key="food.id">
 								<div class="icon">
 									<img width="57" height="57" :src="food.icon">
 								</div>
