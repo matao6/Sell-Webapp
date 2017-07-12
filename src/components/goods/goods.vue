@@ -148,7 +148,8 @@
 
 				this.foodsScroll.on('scroll', (pos) => {
 					// console.log('pos.y: ' + pos.y)
-					this.scrollY = Math.abs(Math.round(pos.y))
+					// 修正this.scrollY不准确
+					this.scrollY = Math.abs(Math.ceil(pos.y)) + 3
 					// console.log('this.scrollY: ' + this.scrollY)
 				})
 			},
