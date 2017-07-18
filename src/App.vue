@@ -2,7 +2,7 @@
  * @Author: matao 
  * @Date: 2017-05-06 14:49:52 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2017-06-02 13:41:35
+ * @Last Modified time: 2017-07-18 21:03:30
  */
 <template>
 	<div>
@@ -18,11 +18,14 @@
 				<router-link to="/seller">商家</router-link>
 			</div>
 		</div>
-		<router-view :seller="seller"></router-view>
+		<keep-alive>
+			<router-view :seller="seller"></router-view>
+		</keep-alive>
 	</div>
 </template>
 
 <script>
+	import {urlParse} from 'common/js/util.js'
 	import header from 'components/header/header.vue'
 
 	const ERR_OK = 0
@@ -30,14 +33,21 @@
 	export default {
 		data () {
 			return {
-				seller: {}
+				seller: {
+					id: (() => {
+						let queryParam = urlParse()
+						// console.log(queryParam)
+						return queryParam.id
+					})()
+				}
 			}
 		},
 		created () {
-			this.$http.get('/api/seller').then((response) => {
+			this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
 				response = response.body
 				if (response.errno === ERR_OK) {
-					this.seller = response.data
+					this.seller = Object.assign({}, this.seller, response.data)
+					// console.log(this.seller.id)
 				}
 			})
 		},
